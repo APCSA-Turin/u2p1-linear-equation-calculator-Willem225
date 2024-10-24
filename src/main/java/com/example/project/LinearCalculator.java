@@ -17,7 +17,7 @@ public class LinearCalculator{
     x2 = Integer.parseInt(p2NP.substring(0,p2NP.indexOf(",")));
     y2 = Integer.parseInt(p2NP.substring((p2NP.indexOf(",")+1),p2NP.length()));
     }
-    //METHODS
+  
     //getter methods
     public int getX1(){
        return x1;           
@@ -47,16 +47,14 @@ public class LinearCalculator{
     }
 
 
-    //distance() -> returns a double. 
-    //calculates the distance between the two points to the nearest HUNDREDTH and returns the value.
+
+    //gives you the distance between the 2 points
     public double distance(){
         double  distance = (Math.sqrt(Math.pow(x2-x1,2)+(Math.pow(y2-y1,2))));
         distance = roundedToHundredth(distance);
         return distance;
     }
-    //yInt() -> returns a double.
-    //calculates the y intercept of the equation and returns the value to the nearest HUNDREDTH
-    //if y-int if undefined, should return -999.99
+    //gives you the yintercept between the 2 points and returns -999.99 if undefined
     public double yInt(){
         if (slope()==-999.99) {
             return -999.99;
@@ -66,9 +64,7 @@ public class LinearCalculator{
         return yIntercept;
     }
 }
-    //slope() -> returns a double. 
-    //calculates the slope of the equations and returns the value to the nearest HUNDREDTH
-    //if slope is undefined, should return -999.99
+    //this calculates the slope of the 2 points and returns -999.99 if its undefined
     public double slope(){
         if (x2-x1==0) {
             return -999.99;
@@ -79,10 +75,7 @@ public class LinearCalculator{
         }
     }
 
-    //equations() -> returns a String.
-    //calculates the final equation in y=mx+b form and returns the string
-    //if the equation has no slope, the equation should return -> "undefined"
-    //HINT: You may need other custom methods to decrease the amount of code in the equations() method
+    //gives you the equation of the line in standard form 
     public String equation(){
         if (slope() == -999.99) {
             return "undefined";
@@ -101,23 +94,20 @@ public class LinearCalculator{
     }
 
 
-    //roundedToHundredth(double x)-> returns double
-    //calculates the input to the nearest hundredth and returns that value
+    //a function that rounds the number to the nearest hundred
     public double roundedToHundredth(double x){
         x = Math.round(x*100)/100.0;
         return x;
     }
 
-    //printInfo() -> returns a string of information
-    //this method is tested but you can also call it in your main method if gradle tests are 
-    //not working. 
+    
     public String printInfo(){
-        String str = "The two points are: (" + x1 + "," + y1 + ")";
-        str += " and " + "(" + x2 + "," + y2 + ")";
-        str += "\nThe equation of the line between these points is: " + equation();
-        str += "\nThe slope of this line is: " + slope();
-        str += "\nThe y-intercept of the line is: " + yInt();
-        str += "\nThe distance between the two points is: " + distance();;
+        String str = "The two points are: (" + x1 + "," + y1 + ")"; //tells you the first 2 points
+        str += " and " + "(" + x2 + "," + y2 + ")"; // tells you the second 2 points
+        str += "\nThe equation of the line between these points is: " + equation(); //tells you the equation of your 2 line
+        str += "\nThe slope of this line is: " + slope(); //tells you the slope of your line
+        str += "\nThe y-intercept of the line is: " + yInt(); //tells you the y intercept of the line
+        str += "\nThe distance between the two points is: " + distance(); //tells you the distance between the 2 points
  
         return str;
     }
